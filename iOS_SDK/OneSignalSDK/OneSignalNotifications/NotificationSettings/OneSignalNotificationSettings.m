@@ -141,7 +141,6 @@ static dispatch_queue_t serialQueue;
 // Prompt then run updateNotificationTypes on the main thread with the response.
 // FUTURE: Add a 2nd seloctor with 'withOptions' for UNAuthorizationOptions*'s
 - (void)promptForNotifications:(void(^)(BOOL accepted))completionHandler {
-    
     id responseBlock = ^(BOOL granted, NSError* error) {
         // Run callback on main / UI thread
         [OneSignalCoreHelper dispatch_async_on_main_queue: ^{ // OneSignalCoreHelper.dispatch_async_on_main_queue ??
@@ -155,6 +154,31 @@ static dispatch_queue_t serialQueue;
     };
     
     UNAuthorizationOptions options = (UNAuthorizationOptionAlert + UNAuthorizationOptionSound + UNAuthorizationOptionBadge);
+    
+    if ([OSDeviceUtils isIOSVersionGreaterThanOrEqual:@"12.0"] && [OSNotificationsManager providesAppNotificationSettings]) {
+        options += PROVIDES_SETTINGS_UNAUTHORIZATIONOPTION;
+    }
+    
+    UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+    [center requestAuthorizationWithOptions:options completionHandler:responseBlock];
+    
+    [OSNotificationsManager registerForAPNsToken];
+}
+
+- (void)promptForCriticalNotifications:(void(^)(BOOL accepted))completionHandler {
+    id responseBlock = ^(BOOL granted, NSError* error) {
+        // Run callback on main / UI thread
+        [OneSignalCoreHelper dispatch_async_on_main_queue: ^{ // OneSignalCoreHelper.dispatch_async_on_main_queue ??
+            OSNotificationsManager.currentPermissionState.provisional = false;
+            OSNotificationsManager.currentPermissionState.accepted = granted;
+            OSNotificationsManager.currentPermissionState.answeredPrompt = true;
+            [OSNotificationsManager updateNotificationTypes: granted ? 15 : 0];
+            if (completionHandler)
+                completionHandler(granted);
+        }];
+    };
+    
+    UNAuthorizationOptions options = (UNAuthorizationOptionAlert + UNAuthorizationOptionSound + UNAuthorizationOptionBadge + UNAuthorizationOptionCriticalAlert);
     
     if ([OSDeviceUtils isIOSVersionGreaterThanOrEqual:@"12.0"] && [OSNotificationsManager providesAppNotificationSettings]) {
         options += PROVIDES_SETTINGS_UNAUTHORIZATIONOPTION;
