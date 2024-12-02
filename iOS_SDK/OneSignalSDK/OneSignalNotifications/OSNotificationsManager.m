@@ -318,6 +318,18 @@ static NSString *_pushSubscriptionId;
     [self.osNotificationSettings promptForNotifications:block];
 }
 
++ (void)requestCriticalPermission:(OSUserResponseBlock)block {
+    // return if the user has not granted privacy permissions
+    if ([OSPrivacyConsentController shouldLogMissingPrivacyConsentErrorWithMethodName:@"requestPermission:"])
+        return;
+    
+    [OneSignalLog onesignalLog:ONE_S_LL_VERBOSE message:[NSString stringWithFormat:@"requestPermission Called"]];
+    
+    self.currentPermissionState.hasPrompted = true;
+    
+    [self.osNotificationSettings promptForCriticalNotifications:block];
+}
+
 // if user has disabled push notifications & fallback == true,
 // the SDK will prompt the user to open notification Settings for this app
 + (void)requestPermission:(OSUserResponseBlock)block fallbackToSettings:(BOOL)fallback {
@@ -351,6 +363,40 @@ static NSString *_pushSubscriptionId;
     }
     
     [self requestPermission:block];
+}
+
+
++ (void)requestCriticalPermission:(OSUserResponseBlock)block fallbackToSettings:(BOOL)fallback {
+    
+    if (self.currentPermissionState.hasPrompted == true && self.osNotificationSettings.getNotificationTypes == 0 && fallback) {
+        //show settings
+
+        let localizedTitle = NSLocalizedString(@"Open Settings", @"A title saying that the user can open iOS Settings");
+        let localizedSettingsActionTitle = NSLocalizedString(@"Open Settings", @"A button allowing the user to open the Settings app");
+        let localizedCancelActionTitle = NSLocalizedString(@"Cancel", @"A button allowing the user to close the Settings prompt");
+        
+        //the developer can provide a custom message in Info.plist if they choose.
+        var localizedMessage = (NSString *)[[NSBundle mainBundle] objectForInfoDictionaryKey:FALLBACK_TO_SETTINGS_MESSAGE];
+        
+        if (!localizedMessage)
+            localizedMessage = NSLocalizedString(@"You currently have notifications turned off for this application. You can open Settings to re-enable them", @"A message explaining that users can open Settings to re-enable push notifications");
+        
+        /*
+         Provide a protocol for this and inject it rather than referencing dialogcontroller directly. This is is because it uses UIApplication sharedApplication
+         */
+        
+        [[OSDialogInstanceManager sharedInstance] presentDialogWithTitle:localizedTitle withMessage:localizedMessage withActions:@[localizedSettingsActionTitle] cancelTitle:localizedCancelActionTitle withActionCompletion:^(int tappedActionIndex) {
+            if (block)
+                block(false);
+            //completion is called on the main thread
+            if (tappedActionIndex > -1)
+                [self presentAppSettings];
+        }];
+        
+        return;
+    }
+    
+    [self requestCriticalPermission:block];
 }
 
 + (void)registerForProvisionalAuthorization:(OSUserResponseBlock)block {
