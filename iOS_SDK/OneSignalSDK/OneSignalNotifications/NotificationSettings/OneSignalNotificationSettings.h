@@ -38,6 +38,7 @@ typedef void(^OSUserResponseBlock)(BOOL accepted);
 - (OSPermissionStateInternal*)getNotificationPermissionState;
 - (void)getNotificationPermissionState:(void (^)(OSPermissionStateInternal *subscriptionState))completionHandler;
 - (void)promptForNotifications:(OSUserResponseBlock)block;
+- (void)promptForCriticalNotifications:(OSUserResponseBlock)block;
 - (void)registerForProvisionalAuthorization:(OSUserResponseBlock)block;
 // Only used for iOS 9
 - (void)onNotificationPromptResponse:(int)notificationTypes;
