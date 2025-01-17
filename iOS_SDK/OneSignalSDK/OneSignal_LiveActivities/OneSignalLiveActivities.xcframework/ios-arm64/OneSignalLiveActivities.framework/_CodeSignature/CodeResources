@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/OneSignalLiveActivities-Swift.h</key>
 		<data>
-		lAFac6cH6F1iI9u6nNmLoaaVSbQ=
+		dIkOdFhSCssXupnh0iQHTXu/7rQ=
 		</data>
 		<key>Headers/OneSignalLiveActivities.h</key>
 		<data>
@@ -14,27 +14,27 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		h5ARr1JFdqk3r9MzgqIkj1shV8U=
+		ZySHkHhTCZCGfpxjP+KQg+8o+v0=
 		</data>
 		<key>Modules/OneSignalLiveActivities.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		cT9EEAw9qskS4Abv8yciWP7phCY=
+		B+bw3V9lsgmHVYUCg0LQwoJsvRk=
 		</data>
 		<key>Modules/OneSignalLiveActivities.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
-		XBFMHtCcFP6VimHrnncieHcD00k=
+		6rRdGU0GORbIu4geHANKZ+8nkYY=
 		</data>
 		<key>Modules/OneSignalLiveActivities.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		1hHzIatHuIgk9qTtiEoPN6M4aiE=
+		tks5Ot2j50QG7q5wgehojqj76dg=
 		</data>
 		<key>Modules/OneSignalLiveActivities.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<data>
-		XBFMHtCcFP6VimHrnncieHcD00k=
+		6rRdGU0GORbIu4geHANKZ+8nkYY=
 		</data>
 		<key>Modules/OneSignalLiveActivities.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		EzGTES001qX9jmdBmG/gz7fqCs4=
+		EtxHemRtcIyXI5YXi1kEtVzafUA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -51,7 +51,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/cu+DczjqJMIhKry9LRVdCehVI0J6tH0/DjS4S0c5LE=
+			tUu7vJIlaakjCqRpuYhMIpUsQPr9R8vzsAkl1CFU/pU=
 			</data>
 		</dict>
 		<key>Headers/OneSignalLiveActivities.h</key>
@@ -65,35 +65,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hj5l6odmG4DTrcRGFl4t1+j7ssAWbSvKQYa7wzqKmDM=
+			GLKX0xgmxJvMFVy26y3/e/H+eY4VDoeKamC61X03vhk=
 			</data>
 		</dict>
 		<key>Modules/OneSignalLiveActivities.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			8k6HEzVfE6l2n8f6nYL9W0G2gDmcewZZhh1R/1jt3vA=
+			YyVcm2vcKkXs4ivLZN5wIXk/PR4u/xqD1K3khODDWrk=
 			</data>
 		</dict>
 		<key>Modules/OneSignalLiveActivities.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			eRKo2nmFXOmR4EdAeOJMIzfqwws0tzfdJxNuPlGE410=
+			bQqA/uuv4D2tzgHql+33wu2ZuruV2BM7EDRJDt8qKz4=
 			</data>
 		</dict>
 		<key>Modules/OneSignalLiveActivities.swiftmodule/arm64-apple-ios.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			8k6HEzVfE6l2n8f6nYL9W0G2gDmcewZZhh1R/1jt3vA=
+			YyVcm2vcKkXs4ivLZN5wIXk/PR4u/xqD1K3khODDWrk=
 			</data>
 		</dict>
 		<key>Modules/OneSignalLiveActivities.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			AH4/+M8D62jFGr10nFIOICxDfesiscB/qtxTwjO+/dM=
+			Wk7WgHn7b7wdkF5kjZFvSsDofnccEjP4+Dw1rC0pNBA=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
